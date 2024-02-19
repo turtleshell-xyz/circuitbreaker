@@ -1,4 +1,4 @@
-# Turtleshell EIP-7265 Circuitbreaker SDK
+# Circuit Breaker SDK
 
 Circuitbreaker SDK for implementing ERC-7265 compliant circuitbreakers in Solidity.
 
