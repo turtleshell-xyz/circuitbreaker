@@ -1,6 +1,6 @@
 # Circuit Breaker SDK
 
-Circuitbreaker SDK for implementing ERC-7265 compliant circuitbreakers in Solidity.
+Circuitbreaker SDK for implementing ERC-7265 compliant Circuit Breakers in Solidity.
 
 ### Installation
 
