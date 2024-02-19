@@ -1,0 +1,32 @@
+{
+  "name": "@markeljan/circuitbreaker",
+  "version": "1.0.0",
+  "description": "Turtleshell EIP-7265 Circuitbreaker Implementation",
+  "main": "README.md",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "files": [
+    "**/*.sol"
+  ],
+  "scripts": {
+    "test": "forge test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikigai-labs-xyz/DeFi-Circuit-Breaker-EIPs.git"
+  },
+  "keywords": [
+    "circuitbreaker",
+    "eip-7265",
+    "turtleshell"
+  ],
+  "author": "ikigai-labs-xyz",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/ikigai-labs-xyz/DeFi-Circuit-Breaker-EIPs/issues"
+  },
+  "homepage": "https://github.com/ikigai-labs-xyz/DeFi-Circuit-Breaker-EIPs#readme"
+}
