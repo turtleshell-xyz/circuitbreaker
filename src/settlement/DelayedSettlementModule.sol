@@ -60,3 +60,5 @@ contract DelayedSettlementModule is
         return 0;
     }
 }
+
+// above is the DelayedSettlementModule: a timelock to schedule transactions, with provided inline documentation

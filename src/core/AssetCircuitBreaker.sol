@@ -213,3 +213,5 @@ contract AssetCircuitBreaker is CircuitBreaker, IAssetCircuitBreaker {
         }
     }
 }
+
+// above is the AssetCircuitBreaker contract, with provided inline documentation

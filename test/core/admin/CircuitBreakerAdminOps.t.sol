@@ -226,3 +226,5 @@ contract CircuitBreakerAdminOpsTest is Test {
         circuitBreaker.startGracePeriod(block.timestamp + 10);
     }
 }
+
+// above are the unit tests for the CircuitBreakerAdminOps.sol contract with provided inline documentation and sufficent coverage

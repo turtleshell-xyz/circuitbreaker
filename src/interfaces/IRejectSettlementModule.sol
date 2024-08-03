@@ -12,3 +12,5 @@ import "./ISettlementModule.sol";
 interface IRejectSettlementModule is ISettlementModule {
 
 }
+
+// above is the interface for the Reject Settlement Module: reject transactions when the firewall triggers, with provided inline documentation

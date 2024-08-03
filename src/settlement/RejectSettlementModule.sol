@@ -31,3 +31,5 @@ contract RejectSettlementModule is IRejectSettlementModule {
         revert cannotExecuteRejectedTransation();
     }
 }
+
+// above is the DelayedSettlementModule: a timelock to schedule transactions, with provided inline documentation

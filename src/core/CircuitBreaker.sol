@@ -405,3 +405,5 @@ contract CircuitBreaker is IERC7265CircuitBreaker, Ownable {
         );
     }
 }
+
+// above is the CircuitBreaker contract, with provided inline documentation

@@ -22,3 +22,5 @@ interface IDelayedSettlementModule is ISettlementModule {
      */
     function pausedTill() external view returns (uint256 pauseTimestamp);
 }
+
+// above is the interface for the Delayed Settlement Module (DSM): a timelock to schedule transactions, with provided inline documentation

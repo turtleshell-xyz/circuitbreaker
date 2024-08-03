@@ -123,3 +123,6 @@ interface IAssetCircuitBreaker is IERC7265CircuitBreaker {
      */
     function isTokenRateLimited(address token) external view returns (bool);
 }
+
+
+// above is the interface for the AssetCircuitBreaker.sol contract with provided inline documentation

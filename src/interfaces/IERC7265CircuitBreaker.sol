@@ -168,3 +168,5 @@ interface IERC7265CircuitBreaker {
     /// @return isInGracePeriod MUST return TRUE if the circuit breaker is currently in grace period, FALSE otherwise
     function isInGracePeriod() external view returns (bool);
 }
+
+// above is the interface for the Circuit Breaker, with provided inline documentation

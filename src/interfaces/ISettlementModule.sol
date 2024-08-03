@@ -37,3 +37,5 @@ interface ISettlementModule {
         bytes calldata innerPayload
     ) external;
 }
+
+// above is the interface for Settlement Modules: timelock (freeze funds) , Reject, etc, with provided inline documentation

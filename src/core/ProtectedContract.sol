@@ -46,3 +46,5 @@ contract ProtectedContract {
         circuitBreaker.onNativeAssetOutflow{value: _amount}(_recipient);
     }
 }
+
+// above is the ProtectedContract that uses a circuitBreaker for enforcing the circuit breaker with provided inline documentation

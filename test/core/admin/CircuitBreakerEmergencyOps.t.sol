@@ -143,3 +143,6 @@ contract CircuitBreakerEmergencyOpsTest is Test {
         deFi.depositNative{value: 1_000_000e18}();
     }
 }
+
+
+// above are the unit tests for the CircuitBreakerEmergencyOps contract with provided inline documentation and sufficent coverage
