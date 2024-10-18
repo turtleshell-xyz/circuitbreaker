@@ -1,64 +1,49 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
-import {TimelockController} from "openzeppelin-contracts/contracts/governance/TimelockController.sol";
 import {IFreezeAssetModule} from "../interfaces/IFreezeAssetModule.sol";
 
 /**
- * @title DelayedSettlementModule: a timelock to schedule transactions
- * @dev This contract combines the IDelayedSettlementModule interface with the TimelockController implementation.
+ * @title FreezeAssetModule: A module to freeze and unfreeze assets
+ * @dev This contract implements the IFreezeAssetModule interface.
  */
-contract FreezeAssetModule is
-    IFreezeAssetModule,
-    TimelockController
-{
-    constructor(
-        uint256 minDelay,
-        address[] memory proposers,
-        address[] memory executors,
-        address admin
-    ) TimelockController(minDelay, proposers, executors, admin) {}
+contract FreezeAssetModule is IFreezeAssetModule {
+    mapping(address => bool) private frozenAssets;
+    address private admin;
+    bool private circuitBreakerOperational;
 
-    function prevent(
-        address target,
-        uint256 value,
-        bytes calldata innerPayload
-    ) external payable override returns (bytes32 newEffectID) {
-        newEffectID = keccak256(abi.encode(target, value, innerPayload));
-        super.schedule(
-            target,
-            value,
-            innerPayload,
-            bytes32(0),
-            bytes32(0),
-            getMinDelay()
-        );
-        return newEffectID;
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Caller is not the admin");
+        _;
     }
 
-    // Add comment on who is allowed to execute (cf TimelockController.sol)
-    function execute(
-        address target,
-        uint256 value,
-        bytes calldata innerPayload
-    ) external override {
-        // (address target, uint256 value, bytes memory innerPayload) = abi.decode(
-        //     extendedPayload,
-        //     (address, uint256, bytes)
-        // );
-        super.execute(target, value, innerPayload, bytes32(0), bytes32(0));
+    modifier onlyOperational() {
+        require(circuitBreakerOperational, "Circuit breaker is not operational");
+        _;
     }
 
-    // Add comments with questions
-    function pausedTill()
-        external
-        view
-        override
-        returns (uint256 pauseTimestamp)
-    {
-        // TODO: Implement the pausing mechanism
-        return 0;
+    constructor(address _admin) {
+        admin = _admin;
+        circuitBreakerOperational = true;
+    }
+
+    function freezeAsset(address _asset) external override onlyAdmin onlyOperational {
+        require(!frozenAssets[_asset], "Asset is already frozen");
+        frozenAssets[_asset] = true;
+        emit AssetFrozen(_asset);
+    }
+
+    function unfreezeAsset(address _asset) external override onlyAdmin onlyOperational {
+        require(frozenAssets[_asset], "Asset is not frozen");
+        frozenAssets[_asset] = false;
+        emit AssetUnfrozen(_asset);
+    }
+
+    function isAssetFrozen(address _asset) external view override returns (bool) {
+        return frozenAssets[_asset];
+    }
+
+    function setCircuitBreakerOperationalStatus(bool newOperationalStatus) external onlyAdmin {
+        circuitBreakerOperational = newOperationalStatus;
     }
 }
-
-// above is the DelayedSettlementModule: a timelock to schedule transactions, with provided inline documentation
